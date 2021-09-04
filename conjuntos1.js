@@ -56,8 +56,9 @@ function Interseccion(a,b){
             return conj
         }
     } )
+    
     newArr = stringToArray(newArr)
-    console.log(newArr)
+    
     return newArr
 }
 
@@ -73,6 +74,8 @@ function Diferencia(a,b){
             return conj
         }
     })
+
+    newArr = stringToArray(newArr)
 
     return newArr
 }
@@ -107,5 +110,8 @@ Interseccion(aXb,aXc)
 
 let R = [['a','B'],['a','B'],['b','C']];
 let S = [['a','B'],['b','C']]
-console.log(`Diferencia: ${Diferencia(aXb,aXc)}`)
+
+const diff =  Diferencia(aXb,aXc)
+console.log(diff[0][0])
+console.log(`Diferencia: ${diff}`)
 console.log(`diferencia simetrica: ${Diferencia_Simetrica(aXb,aXc)}`)
