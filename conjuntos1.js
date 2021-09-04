@@ -33,7 +33,7 @@ function Union(a,b){
     for(let i of a){
         newArr.push(i)
     }
-    
+
     strA = arrayToString(a);
     strB = arrayToString(b)
 
@@ -45,7 +45,6 @@ function Union(a,b){
 
     return newArr
 }
-// Union(a,b)
 
 
 function Interseccion(a,b){
@@ -66,24 +65,23 @@ function Interseccion(a,b){
 
 
 function Diferencia(a,b){
+    let strA =  arrayToString(a);
+    let strB = arrayToString(b);
 
-    let newArr = [];
-        for(let i = 0; i < a.length;i++){
-            for(let j = 0; j < b.length;j++ ){
-                if(a[i].toString() != b[j].toString() && !newArr.includes(a[i])){
-                    newArr.push(a[i])
-                }
-            }
-            
+    let newArr = strA.filter(conj => {
+        if(!strB.includes(conj)){
+            return conj
         }
-        
-    // })
+    })
 
-    console.log(newArr)
     return newArr
 }
 
-// Diferencia(a,b)
+function Diferencia_Simetrica(a,b){
+    const newArr = Diferencia(Union(a,b), Interseccion(a,b));
+    return newArr;
+}
+
 
 
 let a = ['a','b'];
@@ -107,3 +105,7 @@ Union(aXb,aXc)
 
 Interseccion(aXb,aXc)
 
+let R = [['a','B'],['a','B'],['b','C']];
+let S = [['a','B'],['b','C']]
+console.log(`Diferencia: ${Diferencia(aXb,aXc)}`)
+console.log(`diferencia simetrica: ${Diferencia_Simetrica(aXb,aXc)}`)
