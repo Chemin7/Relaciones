@@ -80,11 +80,22 @@ function Diferencia(a,b){
     return newArr
 }
 
-function Diferencia_Simetrica(a,b){
-    const newArr = Diferencia(Union(a,b), Interseccion(a,b));
-    return newArr;
-}
+const Diferencia_Simetrica = (a,b) =>  Diferencia(Union(a,b), Interseccion(a,b));
+    
 
+const Complemento = (universo,conj) => Diferencia(universo,conj)
+
+function Inversa(conj){
+let newArr = [];
+
+    for(let i = 0; i < conj.length; i++){
+        let a = conj[i][0];
+        let b = conj[i][1];
+
+        newArr.push([b,a])
+    }
+return newArr;
+}
 
 
 let a = ['a','b'];
@@ -112,6 +123,11 @@ let R = [['a','B'],['a','B'],['b','C']];
 let S = [['a','B'],['b','C']]
 
 const diff =  Diferencia(aXb,aXc)
-console.log(diff[0][0])
-console.log(`Diferencia: ${diff}`)
-console.log(`diferencia simetrica: ${Diferencia_Simetrica(aXb,aXc)}`)
+
+console.log(`Diferencia: ${arrayToString(diff)}`)
+console.log(`diferencia simetrica: ${arrayToString(Diferencia_Simetrica(aXb,aXc))}`)
+
+
+
+console.log(Inversa(R))
+
