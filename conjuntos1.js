@@ -98,6 +98,22 @@ return newArr;
 }
 
 
+const Cardinalida = conj => conj.length;
+
+function Composicion(b,a){
+    let newArr = [];
+
+    for(let i = 0 ; i < a.length;i++){
+        for(let j = 0; j < b.length; j++){
+            if(a[i][1] == b[j][0] ){
+                newArr.push([a[i][0],b[j][1]]);
+            }
+        }
+    }
+
+    return newArr;
+}
+
 let a = ['a','b'];
 let b = [1,2];
 let c = [2,3]
@@ -119,7 +135,7 @@ Union(aXb,aXc)
 
 Interseccion(aXb,aXc)
 
-let R = [['a','B'],['a','B'],['b','C']];
+let R = [['a','B'],['a','C'],['b','C']];
 let S = [['a','B'],['b','C']]
 
 const diff =  Diferencia(aXb,aXc)
@@ -130,4 +146,13 @@ console.log(`diferencia simetrica: ${arrayToString(Diferencia_Simetrica(aXb,aXc)
 
 
 console.log(Inversa(R))
+//{(1, 1), (1, 4), (2, 3), (3, 1), (3, 4)}
+//{(1 ,0),(2, 0), (3, 1), (3, 2), (4, 1)}
+const comp1 = [[1,1],[1,4],[2,3],[3,1],[3,4]];
+const comp2 = [[1,0],[2,0],[3,1],[3,2],[4,1]]
 
+console.log(Composicion(comp2,comp1))
+
+let r1 = [[1,1],[2,1],[3,2],[4,3]];
+
+console.log(Inversa(Composicion(r1,r1)))
