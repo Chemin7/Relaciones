@@ -1,5 +1,3 @@
-// let a = [['a','A'],['a','B'],['b','C']]
-// let b = [['a','B'],['b','C']];
 
 function productoCartesiano(arr1,arr2){
     let newArr = [];
@@ -62,9 +60,6 @@ function Interseccion(a,b){
     return newArr
 }
 
-
-
-
 function Diferencia(a,b){
     let strA =  arrayToString(a);
     let strB = arrayToString(b);
@@ -114,45 +109,57 @@ function Composicion(b,a){
     return newArr;
 }
 
-let a = ['a','b'];
-let b = [1,2];
-let c = [2,3]
+function reflejar_elementos(conj){
+    let newArr = [];
+    for(let element of conj){
+        newArr.push([element,element])
+    }
 
-let aXb = productoCartesiano(a,b);
-let aXc = productoCartesiano(a,c)
+    return newArr
+}
 
-// console.log(aXb)
-// console.log(aXc)
+function Reflexiva(conj,R){
+    let elem_reflejados = arrayToString(reflejar_elementos(conj));
+    let length_reflejos = 0;
 
-// let U = Union(aXb,aXc);
-//------------------------------
-// let str =  arrayToString(aXb)
-// console.log(str)
+    let element = arrayToString(R)
+    
+    for(let i=0 ;i < element.length; i++){
+        
+        if(elem_reflejados.includes(element[i])) length_reflejos++;
+    }
 
-// console.log(stringToArray(str))
-//----------------------------
-Union(aXb,aXc)
+    return length_reflejos == elem_reflejados.length ? true : false;
+}
 
-Interseccion(aXb,aXc)
-
-let R = [['a','B'],['a','C'],['b','C']];
-let S = [['a','B'],['b','C']]
-
-const diff =  Diferencia(aXb,aXc)
-
-console.log(`Diferencia: ${arrayToString(diff)}`)
-console.log(`diferencia simetrica: ${arrayToString(Diferencia_Simetrica(aXb,aXc))}`)
+const NoReflexiva = (conj,R) => Reflexiva(conj,R) ? false : true;
 
 
+function Simetrica(conj){
+    let x = 0
+    for(let i = 0 ; i < conj.length; i++){
+        for(let j = 0; j < conj.length; j++){
+            if(  (conj[i][0] == conj[j][1] && conj[i][1] == conj[j][0])   && i != j  ){
+                
+                x++
+                console.log(conj[i])
+            }
+        }
 
-console.log(Inversa(R))
-//{(1, 1), (1, 4), (2, 3), (3, 1), (3, 4)}
-//{(1 ,0),(2, 0), (3, 1), (3, 2), (4, 1)}
-const comp1 = [[1,1],[1,4],[2,3],[3,1],[3,4]];
-const comp2 = [[1,0],[2,0],[3,1],[3,2],[4,1]]
+        if(conj[i][0] == conj[i][1]){
+            x++
+            console.log(conj[i])
+        }
+    }
+}
+//--------------------------------------------------------------
+//Seccion de prueba
+//---------------------------------------------------------------
 
-console.log(Composicion(comp2,comp1))
+let reflex1 = [[1,1], [1,2], [1,4], [2, 1], [2, 2], [3, 3], [4, 1], [4, 4]]
+let conj_reflex = [1,2,3,4]
 
-let r1 = [[1,1],[2,1],[3,2],[4,3]];
+console.log(Reflexiva(conj_reflex,reflex1))
 
-console.log(Inversa(Composicion(r1,r1)))
+// console.log(arrayToString(reflejar_elementos([1,2,3,4])))
+console.log(Simetrica(reflex1))
