@@ -152,6 +152,7 @@ function Simetrica(conj){
     return x == conj.length ? true:false;
 }
 
+const Antisimetrica = conj => Simetrica(conj) ? false : true;
 //--------------------------------------------------------------
 //Seccion de prueba
 //---------------------------------------------------------------
@@ -165,3 +166,4 @@ let conj_reflex = [1,2,3,4]
 // console.log(arrayToString(reflejar_elementos([1,2,3,4])))
 console.log(Simetrica(reflex1))
 console.log(Simetrica(no_simetrica))
+
