@@ -95,6 +95,7 @@ return newArr;
 
 const Cardinalida = conj => conj.length;
 
+//Transitiva
 function Composicion(b,a){
     let newArr = [];
 
@@ -140,26 +141,27 @@ function Simetrica(conj){
     for(let i = 0 ; i < conj.length; i++){
         for(let j = 0; j < conj.length; j++){
             if(  (conj[i][0] == conj[j][1] && conj[i][1] == conj[j][0])   && i != j  ){
-                
                 x++
-                console.log(conj[i])
             }
         }
 
         if(conj[i][0] == conj[i][1]){
             x++
-            console.log(conj[i])
         }
     }
+    return x == conj.length ? true:false;
 }
+
 //--------------------------------------------------------------
 //Seccion de prueba
 //---------------------------------------------------------------
 
 let reflex1 = [[1,1], [1,2], [1,4], [2, 1], [2, 2], [3, 3], [4, 1], [4, 4]]
+let no_simetrica = [[2,1],[3,1],[3,2],[4,1],[4,2],[4,3]]
 let conj_reflex = [1,2,3,4]
 
-console.log(Reflexiva(conj_reflex,reflex1))
+// console.log(Reflexiva(conj_reflex,reflex1))
 
 // console.log(arrayToString(reflejar_elementos([1,2,3,4])))
 console.log(Simetrica(reflex1))
+console.log(Simetrica(no_simetrica))
