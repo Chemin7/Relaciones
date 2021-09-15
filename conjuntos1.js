@@ -1,14 +1,4 @@
 
-function productoCartesiano(arr1,arr2){
-    let newArr = [];
-    for(let i = 0; i < arr1.length;i++){
-        for(let j = 0; j < arr2.length;j++){
-            newArr.push([arr1[i],arr2[j]])
-        }
-    }
-    return newArr;
-}
-
 function arrayToString(array){
     strArr = []
     for(let i = 0; i < array.length; i++){
@@ -24,6 +14,17 @@ function stringToArray(str){
         arr.push([str[i][1],str[i][3]])
     }
     return arr
+}
+
+//Operacion con relaciones
+function productoCartesiano(arr1,arr2){
+    let newArr = [];
+    for(let i = 0; i < arr1.length;i++){
+        for(let j = 0; j < arr2.length;j++){
+            newArr.push([arr1[i],arr2[j]])
+        }
+    }
+    return newArr;
 }
 
 function Union(a,b){
@@ -95,7 +96,7 @@ return newArr;
 
 const Cardinalida = conj => conj.length;
 
-//Transitiva
+//Composicion de relaciones
 function Composicion(b,a){
     let newArr = [];
 
@@ -110,6 +111,7 @@ function Composicion(b,a){
     return newArr;
 }
 
+//Propiedades de relaciones
 function reflejar_elementos(conj){
     let newArr = [];
     for(let element of conj){
@@ -153,6 +155,9 @@ function Simetrica(conj){
 }
 
 const Antisimetrica = conj => Simetrica(conj) ? false : true;
+
+
+
 //--------------------------------------------------------------
 //Seccion de prueba
 //---------------------------------------------------------------
