@@ -1,11 +1,18 @@
 
 function arrayToString(array){
     strArr = []
-    for(let i = 0; i < array.length; i++){
-        strArr.push(`[${array[i][0].toString()},${array[i][1].toString()}]`)
+    if(array[0][0]){
+        for(let i = 0; i < array.length; i++){
+            strArr.push(`[${array[i][0].toString()},${array[i][1].toString()}]`)
+        }
+        return strArr;
+    }else{
+
+        return `[${array[0].toString()},${array[1].toString()}]`;
+
     }
 
-    return strArr
+    
 }
 
 function stringToArray(str){
@@ -156,19 +163,41 @@ function Simetrica(conj){
 
 const Antisimetrica = conj => Simetrica(conj) ? false : true;
 
+// && str_conj.includes(arrayToString([conj[i][0],conj[j][1]]))
+
+function Transitiva(conj){
+    const str_conj = arrayToString(conj)
+    console.log(str_conj);
+    let arrTrans = []
+    for(let i = 0; i < conj.length;i++){
+        for(let j = 0; j < conj.length; j++){
+
+            if(conj[i][1] == conj[j][0] && str_conj.includes(arrayToString([conj[i][0],conj[j][1]]))){
+                // console.log(arrayToString([conj[i][0],conj[j][1]])) 
+
+
+                if(!arrTrans.includes(arrayToString(conj[i])))
+                    arrTrans.push(arrayToString(conj[i]))
+
+                if(!arrTrans.includes(arrayToString(conj[j])))
+                    arrTrans.push(arrayToString(conj[j]))
+
+                if(!arrTrans.includes(arrayToString([conj[i][0],conj[j][1]])))
+                    arrTrans.push(arrayToString([conj[i][0],conj[j][1]]))
+
+                // console.log(arrTrans)
+            }
+        }
+    }
+    console.log(arrTrans)
+
+    return arrTrans.length == str_conj.length ? true : false ;
+}
 
 
 //--------------------------------------------------------------
 //Seccion de prueba
 //---------------------------------------------------------------
 
-let reflex1 = [[1,1], [1,2], [1,4], [2, 1], [2, 2], [3, 3], [4, 1], [4, 4]]
-let no_simetrica = [[2,1],[3,1],[3,2],[4,1],[4,2],[4,3]]
-let conj_reflex = [1,2,3,4]
 
-// console.log(Reflexiva(conj_reflex,reflex1))
-
-// console.log(arrayToString(reflejar_elementos([1,2,3,4])))
-console.log(Simetrica(reflex1))
-console.log(Simetrica(no_simetrica))
 
