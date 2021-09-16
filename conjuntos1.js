@@ -1,7 +1,9 @@
 
 function arrayToString(array){
     strArr = []
-    if(array[0][0]){
+
+    if(array[0][1] !== undefined){
+
         for(let i = 0; i < array.length; i++){
             strArr.push(`[${array[i][0].toString()},${array[i][1].toString()}]`)
         }
@@ -150,6 +152,7 @@ function Simetrica(conj){
     for(let i = 0 ; i < conj.length; i++){
         for(let j = 0; j < conj.length; j++){
             if(  (conj[i][0] == conj[j][1] && conj[i][1] == conj[j][0])   && i != j  ){
+               
                 x++
             }
         }
@@ -158,7 +161,8 @@ function Simetrica(conj){
             x++
         }
     }
-    return x == conj.length ? true:false;
+
+    return x >= conj.length ? true:false;
 }
 
 const Antisimetrica = conj => Simetrica(conj) ? false : true;
@@ -167,8 +171,9 @@ const Antisimetrica = conj => Simetrica(conj) ? false : true;
 
 function Transitiva(conj){
     const str_conj = arrayToString(conj)
-    console.log(str_conj);
+
     let arrTrans = []
+
     for(let i = 0; i < conj.length;i++){
         for(let j = 0; j < conj.length; j++){
 
@@ -178,6 +183,7 @@ function Transitiva(conj){
 
                 if(!arrTrans.includes(arrayToString(conj[i])))
                     arrTrans.push(arrayToString(conj[i]))
+
 
                 if(!arrTrans.includes(arrayToString(conj[j])))
                     arrTrans.push(arrayToString(conj[j]))
@@ -189,8 +195,7 @@ function Transitiva(conj){
             }
         }
     }
-    console.log(arrTrans)
-
+    console.log(str_conj)
     return arrTrans.length == str_conj.length ? true : false ;
 }
 
@@ -199,5 +204,16 @@ function Transitiva(conj){
 //Seccion de prueba
 //---------------------------------------------------------------
 
+
+let a = [['d','a'],['c','b'],['b','c'],['a','d']];//?
+let b = [['a','a'],['b','b'],['c','c'],['d','d']];//✓
+let c = [['a','a'],['a','c'],['a','d'],['b','b'],['b','d'],['c','b'],['c','c'],['d','d']]//✓
+let d = [['a','b'],['a','d'],['b','d']]//✓
+let e = [['a','a'],['a','b'],['a','d'],['b','a'],['b','b'],['c','c'],['d','a'],['d','d']]
+
+
+console.log(Reflexiva(['a','b','c','d'],e))
+console.log(Simetrica(e))
+console.log(Transitiva(e))
 
 
