@@ -199,21 +199,42 @@ function Transitiva(conj){
     return arrTrans.length == str_conj.length ? true : false ;
 }
 
+// R = {(a, b), (b, c), (c, b), (c, d)},
+// R1 = {(a, b), (a, c), (b, b), (b, c), (b, d), (c, b), (c, c), (c, d)}
+function ExtencionTransitiva(conj){
+    const strArr = arrayToString(conj)
+    let newArr = [...strArr];
+    console.log(newArr)
+    for(let i = 0;i<conj.length;i++){
+        for(let j = 0;j < conj.length;j++){
+            if(conj[i][1] == conj[j][0] && i != j ){
+                if(!newArr.includes(arrayToString([conj[i][0],conj[j][1]])))
+                    newArr.push(arrayToString([conj[i][0],conj[j][1]]))
+            }
+        }
+    }
+    console.log(newArr)
+    return stringToArray(newArr)
+}
+
 
 //--------------------------------------------------------------
 //Seccion de prueba
 //---------------------------------------------------------------
 
 
-let a = [['d','a'],['c','b'],['b','c'],['a','d']];//?
+let a = [['d','a'],['c','b'],['b','c'],['a','d']];//✓
 let b = [['a','a'],['b','b'],['c','c'],['d','d']];//✓
 let c = [['a','a'],['a','c'],['a','d'],['b','b'],['b','d'],['c','b'],['c','c'],['d','d']]//✓
 let d = [['a','b'],['a','d'],['b','d']]//✓
-let e = [['a','a'],['a','b'],['a','d'],['b','a'],['b','b'],['c','c'],['d','a'],['d','d']]
+let e = [['a','a'],['a','b'],['a','d'],['b','a'],['b','b'],['c','c'],['d','a'],['d','d']]//✓
 
 
-console.log(Reflexiva(['a','b','c','d'],e))
-console.log(Simetrica(e))
-console.log(Transitiva(e))
+// console.log(Reflexiva(['a','b','c','d'],a))
+// console.log(Simetrica(a))
+// console.log(Transitiva(a))
 
 
+let exTr = [['a', 'b'], ['b', 'c'],[ 'c', 'b'], ['c', 'd']]
+
+console.log(ExtencionTransitiva(exTr))
