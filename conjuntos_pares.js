@@ -257,9 +257,5 @@ function ExtensionTransitiva(conj){
 
 //-----------------------------------------------------
 
-let A = [1,3,4,6];
-let B = [2,5,7];
-let C = [2,4,6,8];
-let O = [1,2,3,4,5,6,7,8];
 
-console.log(Complemento([1,2,3,4,5,6,7,8,9],A))
+
