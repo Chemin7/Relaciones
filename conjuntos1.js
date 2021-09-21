@@ -1,6 +1,6 @@
 
 function arrayToString(array){
-    strArr = []
+    let strArr = []
 
     if(array[0][1] !== undefined){
 
@@ -8,12 +8,24 @@ function arrayToString(array){
             strArr.push(`[${array[i][0].toString()},${array[i][1].toString()}]`)
         }
         return strArr;
-    }else{
+    }else if(array.length == 2){
 
         return `[${array[0].toString()},${array[1].toString()}]`;
 
+    }else{
+        let str = "[";
+        for(let i = 0;i < array.length; i++){
+            
+            if(i == array.length -1){ 
+                str+= array[i].toString() + "]"
+            }else{
+                str+=array[i].toString() + ",";
+            }
+        
+        }
+        console.log(str);
+        return str
     }
-
     
 }
 
@@ -26,11 +38,11 @@ function stringToArray(str){
 }
 
 //Operacion con relaciones
-function productoCartesiano(arr1,arr2){
+function productoCartesiano(a,b){
     let newArr = [];
-    for(let i = 0; i < arr1.length;i++){
-        for(let j = 0; j < arr2.length;j++){
-            newArr.push([arr1[i],arr2[j]])
+    for(let i = 0; i < a.length;i++){
+        for(let j = 0; j < b.length;j++){
+            newArr.push([a[i],b[j]])
         }
     }
     return newArr;
@@ -38,20 +50,27 @@ function productoCartesiano(arr1,arr2){
 
 function Union(a,b){
     let newArr = [];
+
     for(let i of a){
         newArr.push(i)
     }
+    
+    if(array[0][1] !== undefined){
+
+    }
 
     strA = arrayToString(a);
-    strB = arrayToString(b)
+    strB = arrayToString(b);
 
     for(let i = 0;i < strB.length; i++ ){
            if(!strA.includes(strB[i])){
                 newArr.push(b[i])
            }
     }
-
+    
     return newArr
+
+
 }
 
 
@@ -74,6 +93,7 @@ function Diferencia(a,b){
     let strA =  arrayToString(a);
     let strB = arrayToString(b);
 
+    console.log(strB)
     let newArr = strA.filter(conj => {
         if(!strB.includes(conj)){
             return conj
@@ -201,10 +221,10 @@ function Transitiva(conj){
 
 // R = {(a, b), (b, c), (c, b), (c, d)},
 // R1 = {(a, b), (a, c), (b, b), (b, c), (b, d), (c, b), (c, c), (c, d)}
-function ExtencionTransitiva(conj){
+function ExtensionTransitiva(conj){
     const strArr = arrayToString(conj)
     let newArr = [...strArr];
-    console.log(newArr)
+
     for(let i = 0;i<conj.length;i++){
         for(let j = 0;j < conj.length;j++){
             if(conj[i][1] == conj[j][0] && i != j ){
@@ -213,7 +233,7 @@ function ExtencionTransitiva(conj){
             }
         }
     }
-    console.log(newArr)
+
     return stringToArray(newArr)
 }
 
@@ -223,11 +243,11 @@ function ExtencionTransitiva(conj){
 //---------------------------------------------------------------
 
 
-let a = [['d','a'],['c','b'],['b','c'],['a','d']];//✓
-let b = [['a','a'],['b','b'],['c','c'],['d','d']];//✓
-let c = [['a','a'],['a','c'],['a','d'],['b','b'],['b','d'],['c','b'],['c','c'],['d','d']]//✓
-let d = [['a','b'],['a','d'],['b','d']]//✓
-let e = [['a','a'],['a','b'],['a','d'],['b','a'],['b','b'],['c','c'],['d','a'],['d','d']]//✓
+// let a = [['d','a'],['c','b'],['b','c'],['a','d']];//✓
+// let b = [['a','a'],['b','b'],['c','c'],['d','d']];//✓
+// let c = [['a','a'],['a','c'],['a','d'],['b','b'],['b','d'],['c','b'],['c','c'],['d','d']]//✓
+// let d = [['a','b'],['a','d'],['b','d']]//✓
+// let e = [['a','a'],['a','b'],['a','d'],['b','a'],['b','b'],['c','c'],['d','a'],['d','d']]//✓
 
 
 // console.log(Reflexiva(['a','b','c','d'],a))
@@ -235,6 +255,28 @@ let e = [['a','a'],['a','b'],['a','d'],['b','a'],['b','b'],['c','c'],['d','a'],[
 // console.log(Transitiva(a))
 
 
-let exTr = [['a', 'b'], ['b', 'c'],[ 'c', 'b'], ['c', 'd']]
+//---------------------------------------------------------------------------------------------
 
-console.log(ExtencionTransitiva(exTr))
+//REGEX
+// let str = "{(1, 1), (1, 3), (1, 5), (2, 2), (3, 1), (3, 3), (3, 5), (4, 4), (5, 1), (5, 3), (5, 5) }"
+// let arr = []
+// let strArr = ""
+
+// for (let i = 0; i < str.length;i++){
+//     if(str[i] == "("){
+//         strArr += "["
+//     }
+//     else if(str[i] )
+// }
+
+// console.log(arr.push("[1,1]".toString()))
+// console.log(arr)
+
+//-----------------------------------------------------
+
+let A = [1,3,4,6];
+let B = [2,5,7];
+let C = [2,4,6,8];
+let O = [1,2,3,4,5,6,7,8];
+
+console.log(Complemento([1,2,3,4,5,6,7,8,9],A))
