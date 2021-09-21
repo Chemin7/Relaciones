@@ -8,23 +8,10 @@ function arrayToString(array){
             strArr.push(`[${array[i][0].toString()},${array[i][1].toString()}]`)
         }
         return strArr;
-    }else if(array.length == 2){
+    }else {
 
         return `[${array[0].toString()},${array[1].toString()}]`;
 
-    }else{
-        let str = "[";
-        for(let i = 0;i < array.length; i++){
-            
-            if(i == array.length -1){ 
-                str+= array[i].toString() + "]"
-            }else{
-                str+=array[i].toString() + ",";
-            }
-        
-        }
-        console.log(str);
-        return str
     }
     
 }
@@ -53,10 +40,6 @@ function Union(a,b){
 
     for(let i of a){
         newArr.push(i)
-    }
-    
-    if(array[0][1] !== undefined){
-
     }
 
     strA = arrayToString(a);
@@ -93,7 +76,7 @@ function Diferencia(a,b){
     let strA =  arrayToString(a);
     let strB = arrayToString(b);
 
-    console.log(strB)
+    
     let newArr = strA.filter(conj => {
         if(!strB.includes(conj)){
             return conj
