@@ -1,8 +1,7 @@
-let A = [1,3,4,6];
-let B = [2,5,7];
-let C = [2,4,6,8];
-let O = [1,2,3,4,5,6,7,8];
-let universo = [1,2,3,4,5,6,7,8,9];
+let A = [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4];
+let B = [-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9];
+
+let universo = [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10];
 
 const operaciones =  {
     union(a,b){
@@ -39,4 +38,10 @@ const operaciones =  {
     
 }
 
-console.log(operaciones.complemento(universo,C))
+let a = [1,2,3,4];
+let b = [1,4,5,6];
+
+console.log(operaciones.interseccion(operaciones.interseccion(a,b),operaciones.complemento([1,2,3,4,5,6],a)));
+
+
+console.log(operaciones.interseccion(a,b))
